@@ -3,8 +3,33 @@
 function showSlide(id) {
   // Hide all slides
   $(".slide").hide();
+  // Hide all subslides
+  $(".subslide").hide();
   // Show just the slide we want to show
   $("#"+id).show();
+}
+
+function showSubSlide(id) {
+    $(".subslide").hide();
+    $("#"+id).show();
+}
+
+function recordAQ() {
+	var i;
+	var j;
+	var aq_list = []
+	for (i=1; i<=50 ; i++) {
+		radios = document.getElementsByName('AQ'+i.toString());
+		for (j=0, length=radios.length; j < length; j++ ) {
+			if (radios[j].checked) {
+				aq_list[i-1] = radios[j].value;
+				break
+			}
+		}
+	}
+	console.log(aq_list);
+	experiment.data.aq = aq_list
+	experiment.debriefing()
 }
 
 // Get random integers.
@@ -18,7 +43,7 @@ function random(a,b) {
   }
 }
 
-// Remove Option Redundancy 
+// Remove Option Redundancy
 function options() {
   var ages = document.getElementById("age");
   var max  = 90;
@@ -29,7 +54,7 @@ function options() {
 }
 
 
-// Randomize Radio Buttons 
+// Randomize Radio Buttons
 function createRadioButtons() {
   choice = random(2,5)
   var radio = Array.from(document.getElementsByName(String(choice)))
@@ -80,7 +105,7 @@ function shuffle(array) {
   return array;
 }
 
-// Select 24 Random Trials, three frome each 
+// Select 24 Random Trials, three from each
 function randomTrials(trials){
   var keys = Object.keys(trials)
   var shuf = shuffle(keys)
@@ -95,7 +120,7 @@ function randomTrials(trials){
   return shuffle(output)
 }
 
-// //Track Slider! 
+// //Track Slider!
 // document.addEventListener('DOMContentLoaded',function() {
 //     document.getElementsByName('slider3')[0].onchange=changeEventHandler;
 //     document.getElementsByName('slider4')[0].onchange=changeEventHandler;
@@ -119,7 +144,7 @@ $.urlParam = function(name){
 // -------------------------- Conditions and Trial Order -----------------------------------//
 
 var trials = {
-    // training: ["training_dog_animal","dog.jpg", "There is an animal!", "X.A"],    
+    // training: ["training_dog_animal","dog.jpg", "There is an animal!", "X.A"],
     X_X: {X_X_dog: ["X_X_DOG_dog","dog.jpg", "Bob: There is a dog!"],
           X_X_cat: ["X_X_CAT_cat","cat.jpg", "Bob: There is a cat!"],
           X_X_ele: ["X_X_ELE_ele","ele.jpg", "Bob: There is an elephant!"]},
@@ -149,7 +174,7 @@ var trials = {
         XY_Z_catdog_ele: ["XY_Z_CATDOG_ele","catdog.jpg", "Bob: There is an elephant!"],
         XY_Z_catele_dog: ["XY_Z_CATELE_dog","catele.jpg", "Bob: There is a dog!"],
         XY_Z_dogele_cat: ["XY_Z_DOGELE_cat","dogele.jpg", "Bob: There is a cat!"]},
-    X_XorY: { 
+    X_XorY: {
         X_XorY_cat_catdog: ["X_XorY_CAT_catordog","cat.jpg", "Bob: There is a cat or a dog!"],
         X_XorY_cat_catele: ["X_XorY_CAT_catorele","cat.jpg", "Bob: There is a cat or an elephant!"],
         X_XorY_dog_dogele: ["X_XorY_DOG_dogorele","dog.jpg", "Bob: There is a dog or an elephant!"],
@@ -168,8 +193,9 @@ var trials = {
 // var sample = [trials.X_X.X_X_cat, trials.X_X.X_X_dog, trials.X_X.X_X_ele]
 
 var rsample = randomTrials(trials);
+var numAQ = 6
 
-var totalTrials = rsample.length;
+var totalTrials = rsample.length + numAQ;
 
 // ############################## The Experiment Code and Functions ##############################
 
@@ -192,12 +218,13 @@ var experiment = {
         guess: [],            // Actual Guess
         response: [],         // Response
         response_type: [],    // Response Type
+        aq: [],               // AQ responses
         aim: [],              // participant's comments on the aim of the study
         comments: [],          // participant's general comments
 
         elapsed_ms: [],       // time taken to provide an answer
-        num_errors: [],       // number of times participant attempted to go to the next slide without providing an answer     
-        
+        num_errors: [],       // number of times participant attempted to go to the next slide without providing an answer
+
         user_agent: [],
         window_width: [],
         window_height: [],
@@ -205,8 +232,8 @@ var experiment = {
 
     start_ms: 0,  // time current trial started ms
     num_errors: 0,    // number of errors so far in current trial
-    
-    
+
+
 // END FUNCTION: The function to call when the experiment has ended
     end: function() {
       showSlide("finished");
@@ -220,7 +247,7 @@ var experiment = {
       var elapsed = Date.now() - experiment.start_ms;
       var response_types = ['','true-false','binary','tertiary','quatenary','quinary']
       if (choice < 6) {
-        // Radio Button Collection  
+        // Radio Button Collection
         var radios = [];
         var initial = document.getElementsByName(String(choice));
         for (i = 0; i < initial.length; i++) {
@@ -272,9 +299,12 @@ var experiment = {
     next: function() {
       // Allow experiment to start if it's a turk worker OR if it's a test run
       if (window.self == window.top | turk.workerId.length > 0) {
+          console.log(rsample.length)
+          console.log(totalTrials)
+          console.log(1-(rsample.length+5)/totalTrials)
           $("#testMessage").html('');   // clear the test message
           $("#prog").attr("style","width:" +
-              String(100 * (1 - rsample.length/totalTrials)) + "%")
+              String(100 * (1 - (rsample.length+numAQ)/totalTrials)) + "%")
           // style="width:progressTotal%"
           window.setTimeout(function() {
             $('#stage-content').show();
@@ -288,12 +318,13 @@ var experiment = {
 
           //If the current trial is undefined, call the end function.
           if (typeof current_trial == "undefined") {
-            return experiment.debriefing();
+            return experiment.AQStart();
+            //return experiment.debriefing();
           }
 
           // Display the sentence stimuli
           // var face_filename = getFaceFile(face_dft);
-          
+
           $("#card").attr('src', "images/".concat(current_trial[1]));
           $("#guess").text(current_trial[2]);
 
@@ -308,6 +339,21 @@ var experiment = {
 
           showSlide("stage");
       }
+    },
+
+    // go to AQ slide
+    AQStart: function() {
+        $("#AQprog").attr("style","width:" +
+            String(100 * (1 - numAQ/totalTrials)) + "%")
+        showSlide("AQ");
+        showSubSlide("AQsub");
+    },
+
+    // go to next AQ subslide
+    AQ_next: function(num) {
+        showSubSlide('AQ'+num.toString());
+        $("#AQprog").attr("style","width:" +
+            String(100 * (1 - (numAQ - num)/totalTrials)) + "%")
     },
 
     //  go to debriefing slide

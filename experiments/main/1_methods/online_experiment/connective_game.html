@@ -1,7 +1,7 @@
 
 <!-- Preamble -->
 <html>
-    
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,47 +22,47 @@
   <br>
   <img src="images/stanford.png" alt="Stanford University">
   <h3 id='logo-text'>Stanford ALPS Lab</h3>
-    
+
     <div class="block-text">
         <p>Welcome! Please consider participating in this study only if you are a native speaker of English. </p>
     </div>
 
   <button type="button" onclick="this.blur(); showSlide('instructions1')">Next</button>
-  
+
   <p class="block-text"><br> <b> Note: you won't be able to preview this HIT before accepting it because it's so short. </b></p>
-  
+
   <p class="block-text" id="legal">
-      
+
       By answering the following questions, you are participating in a study being performed by cognitive scientists in the Stanford Department of Psychology. If you have questions about this research, please contact us at <a href="mailto://masoudj@stanford.edu">masoudj@stanford.edu</a>. You must be at least 18 years old to participate. Your participation in this research is voluntary. You may decline to answer any or all of the following questions. You may decline further participation, at any time, without adverse consequences. Your anonymity is assured; the researchers who have requested your participation will not receive any personal information about you. We have recently been made aware that your public Amazon.com profile can be accessed via your worker ID if you do not choose to opt out. If you would like to opt out of this feature, you may follow instructions available <a href="https://www.amazon.com/gp/help/customer/display.html?nodeId=16465241">here</a>.
     </p>
 </div>
 
 <!-- Instructions: Cards -->
-    
+
 <div class="slide" id="instructions1">
 
     <!--Instruction text-->
-   
+
     <p class="block-text">Thank you so much for participating in this study. We have prepared a card game for you! In this game, each card has one or two of the following animals: dog, cat, or elephant. You can see the cards below.
     </p>
 
     <img align="center" src="images/cards.jpg" width="40%">
 
     <table align = "center" class="judgements">
-        <tr> <td colspan="2" align="center"> 
+        <tr> <td colspan="2" align="center">
             <button type="button" onclick="this.blur(); showSlide('instructions2')">NEXT</button>
             </td>
         </tr>
     </table>
-    
+
 </div>
 
 <!--- Instructions: Bob -->
-    
+
 <div class="slide" id="instructions2">
 
     <!--Instruction text-->
-   
+
     <p class="block-text">You are going to play this game with Bob. You will see a card and Bob is going to guess what animal is on the card. Bob CANNOT see what is on your card. Please tell us if Bob's guess is right or not.
     </p>
 
@@ -70,28 +70,28 @@
 
     <p class="block-text" align="center"> Click NEXT to play the game.
     </p>
-    
+
     <table align = "center" class="judgements">
-        <tr> <td colspan="2" align="center"> 
+        <tr> <td colspan="2" align="center">
             <button type="button" onclick="this.blur(); experiment.next()">NEXT</button>
             </td>
         </tr>
     </table>
-    
+
 </div>
 
 <!-- Progress Bar -->
 
     <div class="slide" id="stage">
-        
+
         <div class="progress">
             <div id="prog" class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:0%"></div>
         </div>
-        
+
         <br>
-        
+
         <div id="stage-content">
-                        
+
             <table align = "center" class="judgements" width="1000">
                 <tr>
                     <td><h3 id="guess" align="right"></h3></td>
@@ -103,7 +103,7 @@
                   <td>
                     <label style='visibility: hidden' name = '2'><input type="radio" name="judgment" value="Wrong">Wrong</label>
                     <label style='visibility: hidden' name = '2'><input type="radio" name="judgment" value="Right">Right</label>
-                  </td> 
+                  </td>
                 </tr>
                 <tr>
                   <td>
@@ -119,7 +119,7 @@
                     <label style='visibility: hidden' name = '4'><input type="radio" name="judgment" value="Kinda Right">Kinda Right</label>
                     <label style='visibility: hidden' name = '4'><input type="radio" name="judgment" value="Right">Right</label>
                   </td>
-                </tr> 
+                </tr>
                 <tr>
                   <td>
                     <label style='visibility: hidden' name = '5'><input type="radio" name="judgment" value="Wrong">Wrong</label>
@@ -127,7 +127,7 @@
                     <label style='visibility: hidden' name = '5'><input type="radio" name="judgment" value="Neither">Neither</label>
                     <label style='visibility: hidden' name = '5'><input type="radio" name="judgment" value="Kinda Right">Kinda Right</label>
                     <label style='visibility: hidden' name = '5'><input type="radio" name="judgment" value="Right">Right</label>
-                    <script type="text/javascript"> 
+                    <script type="text/javascript">
                       createRadioButtons();
                     </script>
                   </td>
@@ -148,7 +148,7 @@
                       <label for="DWDR" style='visibility: hidden' name = '4' class="pull-right">Definitely Right</label>
                       <input style='visibility: hidden' name = 'slider4' type="range" min="0" max="100" value="50" class="slider" id="DWDR">
                     </div>
-                    <script type="text/javascript"> 
+                    <script type="text/javascript">
                       createRadioButtons();
                     </script>
                   </td>
@@ -164,14 +164,502 @@
                     </td>
                 </tr>
             </table>
-            
+
 
         </div>
 
     </div>
 
 <!-- The debriefing slide. -->
-
+ <div class="slide" id="AQ">
+     <div class="progress">
+         <div id="AQprog" class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:0%"></div>
+     </div>
+   <div class="subslide" id="AQsub">
+   <div align="center">
+     <p>
+       We are also interested in the way personality affects how people interpret star ratings.<br />
+       <br />
+       In this next section, you will read 50 statements, 10 at a time. For each statement, select how much you agree or disagree with the statement.<br />
+       <br />
+       Try not to overthink your responses. Your first reaction is best.<br />
+       <!--<br />
+       At the end you can choose to see the results of the personality quiz.-->
+     </p>
+     <button type="button" onclick="experiment.AQ_next(1)">Next</button>
+   </div>
+ </div>
+ <div class="subslide" id="AQ1">
+   <div align="center">
+   <table class="AQ" id="AQtable">
+     <tr>
+       <td class="blank">
+         &nbsp;
+       </td>
+       <th class="head">
+         Definitely<br/>Agree
+       </th>
+       <th class="head">
+         Slightly<br/>Agree
+       </th>
+       <th class="head">
+         Slightly<br/>Disagree
+       </th>
+       <th class="head">
+         Definitely<br/>Disagree
+       </th>
+     </tr>
+     <tr>
+       <td class="prompt">1. I prefer to do things with others rather than on my own.</td>
+       <td class="response"><input type="radio" name="AQ1" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ1" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ1" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ1" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">2. I prefer to do things the same way over and over again.</td>
+       <td class="response"><input type="radio" name="AQ2" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ2" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ2" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ2" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">3. If I try to imagine something, I find it very easy to create a picture in my mind.</td>
+       <td class="response"><input type="radio" name="AQ3" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ3" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ3" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ3" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">4. I frequently get so strongly absorbed in one thing that I lose sight of other things.</td>
+       <td class="response"><input type="radio" name="AQ4" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ4" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ4" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ4" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">5. I often notice small sounds when others do not.</td>
+       <td class="response"><input type="radio" name="AQ5" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ5" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ5" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ5" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">6. I usually notice car number plates or similar strings of information.</td>
+       <td class="response"><input type="radio" name="AQ6" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ6" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ6" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ6" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">7. Other people frequently tell me that what I’ve said is impolite, even though I think it is polite.</td>
+       <td class="response"><input type="radio" name="AQ7" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ7" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ7" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ7" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">8. When I’m reading a story, I can easily imagine what the characters might look like.</td>
+       <td class="response"><input type="radio" name="AQ8" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ8" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ8" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ8" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">9. I am fascinated by dates.</td>
+       <td class="response"><input type="radio" name="AQ9" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ9" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ9" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ9" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">10. In a social group, I can easily keep track of several different people’s conversations.</td>
+       <td class="response"><input type="radio" name="AQ10" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ10" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ10" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ10" value="DD"></td>
+     </tr>
+   </table>
+     <button type="button" onclick="experiment.AQ_next(2)">Next</button>
+   </div>
+ </div>
+ <div class="subslide" id="AQ2">
+   <div align="center">
+     <table>
+     <tr>
+       <td class="blank">
+         &nbsp;
+       </td>
+       <th class="head">
+         Definitely<br/>Agree
+       </th>
+       <th class="head">
+         Slightly<br/>Agree
+       </th>
+       <th class="head">
+         Slightly<br/>Disagree
+       </th>
+       <th class="head">
+         Definitely<br/>Disagree
+       </th>
+     </tr>
+     <tr>
+       <td class="prompt">11. I find social situations easy.</td>
+       <td class="response"><input type="radio" name="AQ11" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ11" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ11" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ11" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">12. I tend to notice details that others do not.</td>
+       <td class="response"><input type="radio" name="AQ12" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ12" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ12" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ12" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">13. I would rather go to a library than a party.</td>
+       <td class="response"><input type="radio" name="AQ13" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ13" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ13" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ13" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">14. I find making up stories easy.</td>
+       <td class="response"><input type="radio" name="AQ14" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ14" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ14" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ14" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">15. I find myself drawn more strongly to people than to things.</td>
+       <td class="response"><input type="radio" name="AQ15" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ15" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ15" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ15" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">16. I tend to have very strong interests which I get upset about if I can’t pursue.</td>
+       <td class="response"><input type="radio" name="AQ16" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ16" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ16" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ16" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">17. I enjoy social chit-chat.</td>
+       <td class="response"><input type="radio" name="AQ17" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ17" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ17" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ17" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">18. When I talk, it isn’t always easy for others to get a word in edgeways.</td>
+       <td class="response"><input type="radio" name="AQ18" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ18" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ18" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ18" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">19. I am fascinated by numbers.</td>
+       <td class="response"><input type="radio" name="AQ19" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ19" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ19" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ19" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">20. When I’m reading a story, I find it difficult to work out the characters’ intentions.</td>
+       <td class="response"><input type="radio" name="AQ20" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ20" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ20" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ20" value="DD"></td>
+     </tr>
+   </table>
+   <button type="button" onclick="experiment.AQ_next(3)">Next</button>
+   </div>
+ </div>
+ <div class="subslide" id="AQ3">
+   <div align="center">
+     <table>
+     <tr>
+       <td class="blank">
+         &nbsp;
+       </td>
+       <th class="head">
+         Definitely<br/>Agree
+       </th>
+       <th class="head">
+         Slightly<br/>Agree
+       </th>
+       <th class="head">
+         Slightly<br/>Disagree
+       </th>
+       <th class="head">
+         Definitely<br/>Disagree
+       </th>
+     </tr>
+     <tr>
+       <td class="prompt">21. I don’t particularly enjoy reading fiction.</td>
+       <td class="response"><input type="radio" name="AQ21" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ21" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ21" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ21" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">22. I find it hard to make new friends.</td>
+       <td class="response"><input type="radio" name="AQ22" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ22" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ22" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ22" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">23. I notice patterns in things all the time.</td>
+       <td class="response"><input type="radio" name="AQ23" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ23" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ23" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ23" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">24. I would rather go to the theatre than a museum.</td>
+       <td class="response"><input type="radio" name="AQ24" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ24" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ24" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ24" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">25. It does not upset me if my daily routine is disturbed.</td>
+       <td class="response"><input type="radio" name="AQ25" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ25" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ25" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ25" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">26. I frequently find that I don’t know how to keep a conversation going.</td>
+       <td class="response"><input type="radio" name="AQ26" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ26" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ26" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ26" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">27. I find it easy to “read between the lines” when someone is talking to me.</td>
+       <td class="response"><input type="radio" name="AQ27" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ27" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ27" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ27" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">28. I usually concentrate more on the whole picture, rather than the small details.</td>
+       <td class="response"><input type="radio" name="AQ28" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ28" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ28" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ28" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">29. I am not very good at remembering phone numbers.</td>
+       <td class="response"><input type="radio" name="AQ29" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ29" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ29" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ29" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">30. I don’t usually notice small changes in a situation, or a person’s appearance.</td>
+       <td class="response"><input type="radio" name="AQ30" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ30" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ30" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ30" value="DD"></td>
+     </tr>
+   </table>
+   <button type="button" onclick="experiment.AQ_next(4)">Next</button>
+   </div>
+ </div>
+ <div class="subslide" id="AQ4">
+   <div align="center">
+     <table>
+     <tr>
+       <td class="blank">
+         &nbsp;
+       </td>
+       <th class="head">
+         Definitely<br/>Agree
+       </th>
+       <th class="head">
+         Slightly<br/>Agree
+       </th>
+       <th class="head">
+         Slightly<br/>Disagree
+       </th>
+       <th class="head">
+         Definitely<br/>Disagree
+       </th>
+     </tr>
+     <tr>
+       <td class="prompt">31. I know how to tell if someone listening to me is getting bored.</td>
+       <td class="response"><input type="radio" name="AQ31" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ31" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ31" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ31" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">32. I find it easy to do more than one thing at once.</td>
+       <td class="response"><input type="radio" name="AQ32" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ32" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ32" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ32" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">33. When I talk on the phone, I’m not sure when it’s my turn to speak.</td>
+       <td class="response"><input type="radio" name="AQ33" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ33" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ33" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ33" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">34. I enjoy doing things spontaneously.</td>
+       <td class="response"><input type="radio" name="AQ34" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ34" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ34" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ34" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">35. I am often the last to understand the point of a joke.</td>
+       <td class="response"><input type="radio" name="AQ35" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ35" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ35" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ35" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">36. I find it easy to work out what someone is thinking or feeling just by looking at their face.</td>
+       <td class="response"><input type="radio" name="AQ36" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ36" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ36" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ36" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">37. If there is an interruption, I can switch back to what I was doing very quickly.</td>
+       <td class="response"><input type="radio" name="AQ37" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ37" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ37" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ37" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">38. I am good at social chit-chat.</td>
+       <td class="response"><input type="radio" name="AQ38" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ38" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ38" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ38" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">39. People often tell me that I keep going on and on about the same thing.</td>
+       <td class="response"><input type="radio" name="AQ39" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ39" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ39" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ39" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">40. When I was young, I used to enjoy playing games involving pretending with other children.</td>
+       <td class="response"><input type="radio" name="AQ40" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ40" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ40" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ40" value="DD"></td>
+     </tr>
+   </table>
+   <button type="button" onclick="experiment.AQ_next(5)">Next</button>
+   </div>
+ </div>
+ <div class="subslide" id="AQ5">
+   <div align="center">
+     <table>
+     <tr>
+       <td class="blank">
+         &nbsp;
+       </td>
+       <th class="head">
+         Definitely<br/>Agree
+       </th>
+       <th class="head">
+         Slightly<br/>Agree
+       </th>
+       <th class="head">
+         Slightly<br/>Disagree
+       </th>
+       <th class="head">
+         Definitely<br/>Disagree
+       </th>
+     </tr>
+     <tr>
+       <td class="prompt">41. I like to collect information about categories of things (e.g. types of car, types of bird, types of train, types of plant, etc.).</td>
+       <td class="response"><input type="radio" name="AQ41" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ41" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ41" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ41" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">42. I find it difficult to imagine what it would be like to be someone else.</td>
+       <td class="response"><input type="radio" name="AQ42" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ42" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ42" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ42" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">43. I like to plan any activities I participate in carefully.</td>
+       <td class="response"><input type="radio" name="AQ43" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ43" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ43" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ43" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">44. I enjoy social occasions.</td>
+       <td class="response"><input type="radio" name="AQ44" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ44" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ44" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ44" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">45. I find it difficult to work out people’s intentions.</td>
+       <td class="response"><input type="radio" name="AQ45" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ45" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ45" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ45" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">46. New situations make me anxious.</td>
+       <td class="response"><input type="radio" name="AQ46" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ46" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ46" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ46" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">47. I enjoy meeting new people.</td>
+       <td class="response"><input type="radio" name="AQ47" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ47" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ47" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ47" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">48. I am a good diplomat.</td>
+       <td class="response"><input type="radio" name="AQ48" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ48" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ48" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ48" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">49. I am not very good at remembering people’s date of birth.</td>
+       <td class="response"><input type="radio" name="AQ49" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ49" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ49" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ49" value="DD"></td>
+     </tr>
+     <tr>
+       <td class="prompt">50. I find it very easy to play games with children that involve pretending.</td>
+       <td class="response"><input type="radio" name="AQ50" value="DA"></td>
+       <td class="response"><input type="radio" name="AQ50" value="SA"></td>
+       <td class="response"><input type="radio" name="AQ50" value="SD"></td>
+       <td class="response"><input type="radio" name="AQ50" value="DD"></td>
+     </tr>
+   </table>
+   <button type="button" onclick="recordAQ();">Next</button>
+   </div>
+ </div>
+ </div>
  <form id="demographics">
  <div class="slide" id="debriefing">
    <div class="question">
@@ -227,7 +715,7 @@
      <p><b>If you have any comment about the experiment, please write it here. Did you happen to run into any issues?</b></p>
      <textarea type="textarea" id="expcomments" style="width:100%" name="expgen"></textarea>
    </div>
-  
+
   <div align="center">
     <button type="submit" id="debriefsubmit">Submit</button>
   </div>
@@ -238,7 +726,7 @@
 <!-- The finish slide. -->
 <div class="slide" id="finished">
   <p class="block-text">
-  Thank you for participating in the study. The purpose of the study is to understand how humans understand the meaning of the logical words "and" and "or". In this study, we ask participants to judge whether statements with "or" were right or wrong depending on what they saw on a set of cards. If you would like to know more about this topic or if you have any questions or concerns, please don't hesitate to contact the lead researcher at <a href="mailto:masoudj@stanford.edu">masoudj@stanford.edu</a>.
+  Thank you for participating in the study. The purpose of the study is to understand how humans understand the meaning of the logical words "and" and "or". In this study, we ask participants to judge whether statements with "or" were right or wrong depending on what they saw on a set of cards. If you would like to know more about this topic or if you have any questions or concerns, please don't hesitate to contact the lead researcher at <a href="mailto:ctb77@stanford.edu">ctb77@stanford.edu</a>.
   </p>
 </div>
 
